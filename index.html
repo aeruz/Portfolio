@@ -181,22 +181,46 @@
         }
         
         .cta-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             background-color: var(--primary-color);
             color: var(--bg-color);
-            padding: 0.6rem 1.8rem;
+            padding: 0.7rem 1.8rem;
             font-size: 0.9rem;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            cursor: pointer;
         }
         
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(88, 166, 255, 0.2);
             background-color: #7bbaff;
+        }
+
+        .cta-button.secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .cta-button.secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            box-shadow: 0 8px 15px rgba(88, 166, 255, 0.25);
+        }
+        
+        .about-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2.5rem;
         }
         
         #hero-video-thumbnail {
@@ -207,7 +231,7 @@
             border-radius: 8px;
             cursor: pointer;
             position: relative;
-            margin: 0 auto;
+            margin: 1.5rem auto 0;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             justify-content: center;
@@ -268,22 +292,22 @@
 
         .social-links a {
             margin: 0 1rem;
-            display: inline-block; /* ADDED */
-            transition: transform 0.3s ease; /* CHANGED */
+            display: inline-block;
+            transition: transform 0.3s ease;
         }
 
         .social-links a:hover {
-            transform: scale(1.1); /* CHANGED */
+            transform: scale(1.1);
         }
 
-        .social-links img { /* CHANGED */
+        .social-links img {
             width: 28px;
             height: 28px;
-            filter: grayscale(100%) brightness(1.5); /* Makes them off-white */
+            filter: grayscale(100%) brightness(1.5);
             transition: filter 0.3s ease;
         }
 
-        .social-links a:hover img { /* ADDED */
+        .social-links a:hover img {
             filter: grayscale(0%) brightness(1);
         }
         
@@ -296,36 +320,7 @@
         #contact .cta-button {
             margin-bottom: 0;
         }
-
-        .cv-container {
-            text-align: center;
-            margin-top: 2.5rem;
-        }
-
-        .cv-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.6rem 1.8rem;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .cv-button:hover {
-            border-color: var(--primary-color);
-            background-color: var(--primary-color);
-            color: var(--bg-color);
-        }
-
-        .cv-button svg {
-            width: 20px;
-            height: 20px;
-        }
-
+        
         /* --- Projects Section --- */
         #my-animations {
             position: relative;
@@ -384,6 +379,99 @@
             height: 150px;
         }
         
+        /* --- Experience & Skills Modal Content --- */
+        .experience-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .experience-timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-item.left {
+            left: 0;
+        }
+        .timeline-item.right {
+            left: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            right: -8px;
+            background-color: var(--primary-color);
+            border: 2px solid var(--secondary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-item.right::after {
+            left: -8px;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: #0d1117; /* Darker than modal bg */
+            position: relative;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+        .job-type-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border-radius: 6px;
+            background-color: rgba(88, 166, 255, 0.1);
+            color: #8cbef3;
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            margin-bottom: 0.75rem;
+        }
+
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .skill-category {
+            background-color: #0d1117; /* Darker than modal bg */
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .skill-category ul {
+            list-style: none;
+        }
+        .skill-category li {
+            margin-bottom: 0.5rem;
+            color: var(--subtle-text-color);
+        }
+
+
         /* --- Animation --- */
         .reveal {
             opacity: 0;
@@ -412,11 +500,30 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 1rem;
         }
         
         .modal-overlay.active {
             opacity: 1;
             visibility: visible;
+        }
+        
+        .modal-content {
+            background: var(--secondary-color);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px) scale(0.95);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0) scale(1);
         }
         
         .modal-close {
@@ -436,25 +543,7 @@
             transform: rotate(90deg);
         }
 
-        /* Project Details Modal */
-        #project-modal .modal-content {
-            background: var(--secondary-color);
-            padding: 2.5rem;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            transform: translateY(20px) scale(0.95);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        #project-modal.active .modal-content {
-            transform: translateY(0) scale(1);
-        }
-        
+        /* Project Details Modal Specifics */
         #modal-project-video {
             width: 100%;
             border-radius: 8px;
@@ -534,18 +623,8 @@
             background-color: #000;
         }
 
-
         /* Misc Project Modal Styles */
         #misc-project-modal .modal-content {
-            background: var(--secondary-color);
-            padding: 2.5rem;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
             transform: translateY(20px) scale(0.95);
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -604,8 +683,6 @@
             max-width: 90vw;
             aspect-ratio: 16 / 9;
             padding: 0;
-            position: relative;
-            transition: width 0.4s ease, height 0.4s ease, max-width 0.4s ease, border-radius 0.4s ease;
         }
         
         #video-player-container {
@@ -619,6 +696,10 @@
             #hero h1 { font-size: 2.5rem; }
             #hero p { font-size: 1.2rem; }
             .section-title { font-size: 2.2rem; }
+            .experience-timeline::after { left: 20px; }
+            .timeline-item { width: 100%; padding-left: 50px; padding-right: 25px; }
+            .timeline-item.left, .timeline-item.right { left: 0; }
+            .timeline-item::after { left: 12px; }
         }
 
     </style>
@@ -630,7 +711,7 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#my-animations">My Animations</a></li>
+                    <li><a href="#my-animations">Animations</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -659,16 +740,24 @@
                 <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: var(--subtle-text-color);">
                     I’m a passionate 3D animator with more than 10 years of experience, focused on storytelling and character-driven animation. Working in Maya and Blender, I love bringing ideas to life through movement that feels both expressive and believable.
                 </p>
-                <div class="cv-container">
-                    <a href="ariasCV2025.pdf" target="_blank" class="cv-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                        View My CV
+                <div class="about-buttons">
+                    <a href="ariasCV2025.pdf" target="_blank" class="cta-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        View CV / Resume
                     </a>
+                    <button id="open-experience-btn" class="cta-button secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                        My Experience
+                    </button>
+                    <button id="open-skills-btn" class="cta-button secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                        Skills & Expertise
+                    </button>
                 </div>
             </div>
         </section>
 
-        <section id="my-animations" class="section">
+        <section id="my-animations" class="section" style="background-color: var(--secondary-color);">
             <div class="container">
                 <h2 class="section-title reveal">My Animations</h2>
                 <p class="section-subtitle reveal">Click on a logo to see the project details.</p>
@@ -682,7 +771,7 @@
                          data-playblasts="P-1,5"
                          data-details="A series of LEGO animations I created in Autodesk Maya, featuring Batman, Spider-Man, Marvel, and Star Wars characters. Focused on animation only—timing, movement, and performance. Most are short stories featured on LEGO’s official YouTube channel: <a href='https://www.youtube.com/@LEGO' target='_blank'>@LEGO</a>.">
                         <div class="project-image-wrapper">
-                           <img src="lego-logo.png" alt="LEGO Collaboration Logos">
+                            <img src="lego-logo.png" alt="LEGO Collaboration Logos">
                         </div>
                     </div>
 
@@ -694,7 +783,7 @@
                          data-playblasts="P-2,6"
                          data-details="These are my 3D animations created for Marvel, based on Contest of Champions—a popular mobile fighting game featuring iconic Marvel characters. I contributed to the character animation in these cinematic-style trailers.">
                         <div class="project-image-wrapper">
-                           <img src="marvel-logo.png" alt="MARVEL Collaboration Logos">
+                            <img src="marvel-logo.png" alt="MARVEL Collaboration Logos">
                         </div>
                     </div>
                 </div>
@@ -705,10 +794,10 @@
                          data-title-type="image" 
                          data-title-src="metal-collab.png" 
                          data-video="METAL.mp4" 
-                         data-playblasts="P-3,5"
+                         data-playblasts="P-3,4"
                          data-details="A collection of short cinematic trailers I animated for Metal Revolution, a futuristic fighting game. Created in Maya These clips highlight my focus on dynamic character motion, impactful action choreography, and cinematic timing.">
                         <div class="project-image-wrapper">
-                           <img src="metalrevolution-logo.png" alt="Project 3 Logo">
+                            <img src="metalrevolution-logo.png" alt="Project 3 Logo">
                         </div>
                     </div>
                     <div class="project-card reveal" 
@@ -719,7 +808,7 @@
                          data-playblasts="P-4,4"
                          data-details="Magnum Quest is a fantasy-themed mobile RPG with strategic battles and rich visuals. I worked as a 3D animator on its cinematic trailer, focusing on character animation and storytelling.">
                         <div class="project-image-wrapper">
-                           <img src="magnumquest-logo.png" alt="Project 4 Logo">
+                            <img src="magnumquest-logo.png" alt="Project 4 Logo">
                         </div>
                     </div>
                     <div class="project-card reveal" 
@@ -730,18 +819,18 @@
                          data-playblasts="P-5,1"
                          data-details="Space Leapers is a sci-fi mobile RPG featuring vibrant characters and fast-paced, tactical gameplay across the galaxy. I contributed as a 3D animator for its cinematic trailer, focusing on dynamic character performances.">
                         <div class="project-image-wrapper">
-                           <img src="SL-logo.png" alt="Project 5 Logo">
+                            <img src="sl-logo.png" alt="Project 5 Logo">
                         </div>
                     </div>
                     <div class="project-card reveal" 
                          data-title="Grand Saga" 
                          data-title-type="image"
-                         data-title-src="grandsaga-collab.png"
+                         data-title-src="gs-collab.png"
                          data-video="GS.mp4" 
                          data-playblasts="P-6,1"
                          data-details="Gran Saga is a visually stunning fantasy MMORPG known for its epic story and high-quality cinematics. I contributed as a 3D animator on its cinematic trailer, bringing characters and action sequences to life.">
                         <div class="project-image-wrapper">
-                           <img src="GS-logo.png" alt="Project 6 Logo">
+                            <img src="gs-logo.png" alt="Project 6 Logo">
                         </div>
                     </div>
                     <div class="project-card reveal" 
@@ -752,7 +841,7 @@
                          data-playblasts="P-7,4"
                          data-details="I contributed as a 3D animator on cinematic trailers for popular mobile titles including Angry Birds, PUBG Mobile, FIFA Mobile, and Subway Surfers, focusing on dynamic character animation and engaging visuals.">
                         <div class="project-image-wrapper">
-                           <img src="collab-logo.png" alt="Project 7 Logo">
+                            <img src="collab-logo.png" alt="Project 7 Logo">
                         </div>
                     </div>
                     <div class="project-card reveal" 
@@ -762,7 +851,7 @@
                          data-summary="A collection of personal projects, unrendered playblasts, and work from discontinued games."
                          data-details="Creature Animation i did for Clash of Beasts|Animation worked on for StreetBall|A sci-fi presentation we did for a potential client|Some if the animation i did for a game called IdleBankTycoon">
                         <div class="project-image-wrapper">
-                           <img src="misc-logo.png" alt="Misc Animations Logo">
+                            <img src="misc-logo.png" alt="Misc Animations Logo">
                         </div>
                     </div>
                 </div>
@@ -778,14 +867,14 @@
                 <a href="mailto:aeruz1987@gmail.com" class="cta-button" style="cursor:pointer;">Say Hello</a>
                 
                 <div class="social-links">
-                    <a href="#" target="_blank" aria-label="Facebook">
-                        <img src="f.png" alt="Facebook">
+                    <a href="https://www.facebook.com/aeruz" target="_blank" aria-label="Facebook">
+                        <img src="f.png" alt="Facebook Icon">
                     </a>
-                    <a href="#" target="_blank" aria-label="LinkedIn">
-                        <img src="l.png" alt="LinkedIn">
+                    <a href="https://www.linkedin.com/in/aeruz" target="_blank" aria-label="LinkedIn">
+                        <img src="l.png" alt="LinkedIn Icon">
                     </a>
-                    <a href="#" target="_blank" aria-label="X">
-                        <img src="x.png" alt="X">
+                    <a href="https://x.com/Aeruz" target="_blank" aria-label="X">
+                        <img src="x.png" alt="X Icon">
                     </a>
                 </div>
             </div>
@@ -793,6 +882,7 @@
 
     </main>
     
+    <!-- Project Details Modal -->
     <div id="project-modal" class="modal-overlay">
         <div class="modal-content">
             <span class="modal-close">×</span>
@@ -809,6 +899,7 @@
         </div>
     </div>
     
+    <!-- Misc Project Modal -->
     <div id="misc-project-modal" class="modal-overlay">
         <div class="modal-content">
             <span class="modal-close">×</span>
@@ -817,11 +908,98 @@
         </div>
     </div>
     
+    <!-- Demoreel Video Player Modal -->
     <div id="video-player-modal" class="modal-overlay">
         <div class="modal-content">
             <div id="video-player-container"></div>
         </div>
         <span class="modal-close">×</span>
+    </div>
+
+    <!-- Experience Modal -->
+    <div id="experience-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close">×</span>
+            <h2 class="section-title" style="margin-bottom: 3rem;">Work Experience</h2>
+            <div class="experience-timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Senior 3D Animator</h3>
+                        <span class="job-type-tag">Freelance</span>
+                        <p>LimitBreak Studio | 2024 - 2025</p>
+                        <p style="color: var(--subtle-text-color); margin-top: 0.5rem;">Created 3D animations for an unreleased mobile game.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>3D Animator</h3>
+                        <span class="job-type-tag">Full-time</span>
+                        <p>Full Metal Productions | 2020 - 2023</p>
+                        <p style="color: var(--subtle-text-color); margin-top: 0.5rem;">Mostly doing animation trailers from mobile games. Notable projects include Marvel, PUBG, FIFA, and Subway Surfers.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>3D Animator</h3>
+                        <span class="job-type-tag">Freelance</span>
+                        <p>CC Pixel Productions | 2017 - 2024</p>
+                         <p style="color: var(--subtle-text-color); margin-top: 0.5rem;">Mostly doing animations from YouTube content. Notable project: LEGO.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>3D Animator, Rigger</h3>
+                        <span class="job-type-tag">Contract</span>
+                        <p>Tre14 | 2018</p>
+                         <p style="color: var(--subtle-text-color); margin-top: 0.5rem;">Participated on a short movie animation based from Sweden. Notable project: Martha Proppmat.</p>
+                    </div>
+                </div>
+                 <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Illustrator, 3D Artist</h3>
+                        <span class="job-type-tag">Full-time</span>
+                        <p>Sophies World Productions | 2015 - 2020</p>
+                         <p style="color: var(--subtle-text-color); margin-top: 0.5rem;">Making short animations using Maya and Blender as a generalist, also doing illustrations.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Illustrator/3D Artist/UI Designer</h3>
+                        <span class="job-type-tag">Full-time</span>
+                        <p>KEESS/I RENDER ANIMATION INC. | 2007 - 2015</p>
+                         <p style="color: var(--subtle-text-color); margin-top: 0.5rem;">Making children's book illustrations using Photoshop. Making short animations using Maya and Blender as an animator and post-production using AE.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills Modal -->
+    <div id="skills-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close">×</span>
+            <h2 class="section-title" style="margin-bottom: 3rem;">Skills & Expertise</h2>
+             <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Software Proficiency</h3>
+                    <ul>
+                        <li>✓ Autodesk Maya</li>
+                        <li>✓ Blender</li>
+                        <li>✓ ZBrush</li>
+                        <li>✓ Adobe After Effects</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Core Animation Skills</h3>
+                    <ul>
+                        <li>✓ Character Animation</li>
+                        <li>✓ Cinematic Storytelling</li>
+                        <li>✓ Keyframe Animation & Mocap</li>
+                        <li>✓ Rigging & Skinning Basics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- YouTube IFrame API script -->
@@ -860,18 +1038,6 @@
                 lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
             });
 
-            // --- Spotlight Effect on Project Grid ---
-            const projectGrids = document.querySelectorAll('.project-grid');
-            projectGrids.forEach(grid => {
-                grid.addEventListener('mousemove', e => {
-                    const rect = grid.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    grid.style.setProperty('--x', `${x}px`);
-                    grid.style.setProperty('--y', `${y}px`);
-                });
-            });
-
             // --- Reveal on Scroll Animation ---
             const revealElements = document.querySelectorAll('.reveal');
             const revealObserver = new IntersectionObserver((entries) => {
@@ -879,32 +1045,79 @@
                     if (entry.isIntersecting) {
                         setTimeout(() => {
                             entry.target.classList.add('visible');
-                        }, index * 150);
+                        }, index * 100);
                         revealObserver.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
             revealElements.forEach(el => revealObserver.observe(el));
 
-            // --- Project Modal Script ---
+            // --- Generic Modal Open/Close Logic ---
+            const setupModal = (modalId, openBtnId) => {
+                const modal = document.getElementById(modalId);
+                if (!modal) return { closeModal: () => {} }; 
+
+                const openBtn = document.getElementById(openBtnId);
+                const closeBtn = modal.querySelector('.modal-close');
+
+                const openModal = () => {
+                    modal.classList.add('active');
+                    document.body.classList.add('modal-open');
+                };
+
+                const closeModal = () => {
+                    modal.classList.remove('active');
+                    document.body.classList.remove('modal-open');
+                    
+                    const allVideos = modal.querySelectorAll('video');
+                    allVideos.forEach(vid => {
+                        vid.pause();
+                        vid.currentTime = 0;
+                    });
+
+                    if (modalId === 'video-player-modal' && reelPlayer && typeof reelPlayer.stopVideo === 'function') {
+                        reelPlayer.stopVideo();
+                    }
+                };
+
+                if(openBtn) openBtn.addEventListener('click', openModal);
+                if(closeBtn) closeBtn.addEventListener('click', closeModal);
+                modal.addEventListener('click', e => {
+                    if (e.target === modal) closeModal();
+                });
+                return { modal, openModal, closeModal };
+            };
+
+            // Setup all modals
+            const { closeModal: closeProjectModal } = setupModal('project-modal');
+            const { closeModal: closeMiscProjectModal } = setupModal('misc-project-modal');
+            const { modal: videoPlayerModal, closeModal: closeVideoPlayerModal } = setupModal('video-player-modal');
+            const { closeModal: closeExperienceModal } = setupModal('experience-modal', 'open-experience-btn');
+            const { closeModal: closeSkillsModal } = setupModal('skills-modal', 'open-skills-btn');
+
+            // --- Project Modals Specific Logic ---
             const projectCards = document.querySelectorAll('.project-card');
-            const projectModal = document.getElementById('project-modal');
-            const projectModalClose = projectModal.querySelector('.modal-close');
-            const miscProjectModal = document.getElementById('misc-project-modal');
-            const miscProjectModalClose = miscProjectModal.querySelector('.modal-close');
             
-            const modalVideo = document.getElementById('modal-project-video');
-            const modalTitle = document.getElementById('modal-project-title');
-            const modalDetails = document.getElementById('modal-project-details');
-            const playblastGrid = document.getElementById('modal-playblast-grid');
-            const playblastSection = document.getElementById('modal-playblast-section');
-            const playblastVideoContainer = document.getElementById('playblast-video-container');
-            const playblastVideo = document.getElementById('modal-playblast-video');
-            
-            const miscModalTitle = document.getElementById('misc-modal-title');
-            const miscPlayblastsContainer = document.getElementById('misc-modal-playblasts-container');
+            projectCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    if (card.dataset.title === 'Misc Animations') {
+                        openMiscProjectModal(card);
+                    } else {
+                        openProjectModal(card);
+                    }
+                });
+            });
 
             const openProjectModal = (card) => {
+                const modal = document.getElementById('project-modal');
+                const modalVideo = modal.querySelector('#modal-project-video');
+                const modalTitle = modal.querySelector('#modal-project-title');
+                const modalDetails = modal.querySelector('#modal-project-details');
+                const playblastGrid = modal.querySelector('#modal-playblast-grid');
+                const playblastSection = modal.querySelector('#modal-playblast-section');
+                const playblastVideoContainer = modal.querySelector('#playblast-video-container');
+                const playblastVideo = modal.querySelector('#modal-playblast-video');
+
                 const title = card.dataset.title;
                 const titleType = card.dataset.titleType;
                 const titleSrc = card.dataset.titleSrc;
@@ -913,14 +1126,13 @@
                 const playblasts = card.dataset.playblasts;
                 
                 if (titleType === 'image' && titleSrc) {
-                    modalTitle.innerHTML = `<img src="${titleSrc}" alt="${title}" style="max-height: 60px; width: auto; margin-bottom: 1rem;">`;
+                    modalTitle.innerHTML = `<img src="${titleSrc}" alt="${title}" style="max-height: 60px; width: auto; margin-bottom: 1rem;" onerror="this.style.display='none'; modalTitle.innerHTML='<h3 style=\'font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;\'>${title}</h3>'">`;
                 } else {
                     modalTitle.innerHTML = `<h3 style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;">${title}</h3>`;
                 }
 
                 modalVideo.src = videoSrc;
                 modalDetails.innerHTML = details;
-
                 playblastGrid.innerHTML = ''; 
                 playblastVideoContainer.style.display = 'none';
 
@@ -930,12 +1142,19 @@
                     const projectNum = folder.split('-')[1];
 
                     for (let i = 1; i <= parseInt(count); i++) {
-                        const videoPath = `${folder}/p-${projectNum}-${i}.mp4`;
-                        const thumbPath = `${folder}/p-${projectNum}-${i}.jpg`;
+                        // --- IMPORTANT ---
+                        // The paths below assume you have a folder named "playblasts" in the same directory as your HTML file.
+                        // Inside "playblasts", you must have folders like "P-1", "P-2", etc.
+                        // Example for the first LEGO playblast: playblasts/P-1/p-1-1.mp4
+                        const videoPath = `playblasts/${folder}/p-${projectNum}-${i}.mp4`;
+                        const thumbPath = `playblasts/${folder}/p-${projectNum}-${i}.jpg`;
 
                         const thumbDiv = document.createElement('div');
                         thumbDiv.className = 'playblast-thumb';
-                        thumbDiv.style.backgroundImage = `url(${thumbPath})`;
+                        const thumbImg = new Image();
+                        thumbImg.src = thumbPath;
+                        thumbImg.onload = () => { thumbDiv.style.backgroundImage = `url(${thumbPath})`; };
+                        thumbImg.onerror = () => { thumbDiv.style.backgroundImage = `url(https://placehold.co/160x90/0d1117/8b949e?text=Playblast+${i})`; };
                         
                         thumbDiv.addEventListener('click', () => {
                             playblastVideoContainer.style.display = 'block';
@@ -948,13 +1167,16 @@
                 } else {
                     playblastSection.style.display = 'none';
                 }
-
-                projectModal.classList.add('active');
+                modal.classList.add('active');
                 document.body.classList.add('modal-open');
                 modalVideo.play();
             };
-            
+
             const openMiscProjectModal = (card) => {
+                const modal = document.getElementById('misc-project-modal');
+                const miscModalTitle = modal.querySelector('#misc-modal-title');
+                const miscPlayblastsContainer = modal.querySelector('#misc-modal-playblasts-container');
+
                 const title = card.dataset.title;
                 const summary = card.dataset.summary;
                 const playblastsData = card.dataset.playblasts.split(',');
@@ -967,7 +1189,7 @@
                 miscModalTitle.innerHTML = titleHTML;
                 miscPlayblastsContainer.innerHTML = '';
 
-                const mainFolder = playblastsData.shift(); // e.g., "P-8"
+                const mainFolder = playblastsData.shift(); 
 
                 playblastsData.forEach((subfolderData, index) => {
                     const [subfolderName, videoCount] = subfolderData.split(':');
@@ -985,20 +1207,22 @@
                     player.playsinline = true;
                     sectionDiv.appendChild(player);
 
-                    const description = document.createElement('p');
-                    description.className = 'misc-video-description';
-                    sectionDiv.appendChild(description);
-
                     const grid = document.createElement('div');
                     grid.className = 'misc-playblast-grid';
 
                     for (let i = 1; i <= parseInt(videoCount); i++) {
-                        const videoPath = `${mainFolder}/${subfolderName}/${i}.mp4`;
-                        const thumbPath = `${mainFolder}/${subfolderName}/${i}.jpg`;
+                        // --- IMPORTANT ---
+                        // This section expects a nested folder structure.
+                        // Example for the first Misc playblast: playblasts/P-8/1/1.mp4
+                        const videoPath = `playblasts/${mainFolder}/${subfolderName}/${i}.mp4`;
+                        const thumbPath = `playblasts/${mainFolder}/${subfolderName}/${i}.jpg`;
 
                         const thumbDiv = document.createElement('div');
                         thumbDiv.className = 'playblast-thumb';
-                        thumbDiv.style.backgroundImage = `url(${thumbPath})`;
+                        const thumbImg = new Image();
+                        thumbImg.src = thumbPath;
+                        thumbImg.onload = () => { thumbDiv.style.backgroundImage = `url(${thumbPath})`; };
+                        thumbImg.onerror = () => { thumbDiv.style.backgroundImage = `url(https://placehold.co/160x90/0d1117/8b949e?text=Playblast+${i})`; };
                         
                         thumbDiv.addEventListener('click', () => {
                             player.src = videoPath;
@@ -1008,60 +1232,22 @@
                         grid.appendChild(thumbDiv);
                     }
                     
-                    // Load first video by default
                     if (parseInt(videoCount) > 0) {
-                        player.src = `${mainFolder}/${subfolderName}/1.mp4`;
+                        player.src = `playblasts/${mainFolder}/${subfolderName}/1.mp4`;
                     }
 
                     sectionDiv.appendChild(grid);
                     miscPlayblastsContainer.appendChild(sectionDiv);
                 });
 
-                miscProjectModal.classList.add('active');
+                modal.classList.add('active');
                 document.body.classList.add('modal-open');
             };
 
-            const closeProjectModal = () => {
-                projectModal.classList.remove('active');
-                document.body.classList.remove('modal-open');
-                modalVideo.pause();
-                modalVideo.currentTime = 0;
-                playblastVideo.pause();
-                playblastVideo.currentTime = 0;
-            };
-            
-            const closeMiscProjectModal = () => {
-                miscProjectModal.classList.remove('active');
-                document.body.classList.remove('modal-open');
-                miscProjectModal.querySelectorAll('video').forEach(vid => {
-                    vid.pause();
-                    vid.currentTime = 0;
-                });
-            };
-
-            projectCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    if (card.dataset.title === 'Misc Animations') {
-                        openMiscProjectModal(card);
-                    } else {
-                        openProjectModal(card);
-                    }
-                });
-            });
-            
-            projectModalClose.addEventListener('click', closeProjectModal);
-            projectModal.addEventListener('click', e => { if (e.target === projectModal) closeProjectModal(); });
-            miscProjectModalClose.addEventListener('click', closeMiscProjectModal);
-            miscProjectModal.addEventListener('click', e => { if (e.target === miscProjectModal) closeMiscProjectModal(); });
-
-            // --- Video Player Modal Script ---
+            // --- Demoreel Video Player Modal Specific Logic ---
             const heroThumbnail = document.getElementById('hero-video-thumbnail');
-            const videoPlayerModal = document.getElementById('video-player-modal');
-            const videoPlayerModalClose = videoPlayerModal.querySelector('.modal-close');
-
             heroThumbnail.style.backgroundImage = `url(https://img.youtube.com/vi/${reelVideoId}/maxresdefault.jpg)`;
-
-            const openVideoPlayerModal = () => {
+            heroThumbnail.addEventListener('click', () => {
                 videoPlayerModal.classList.add('active');
                 document.body.classList.add('modal-open');
                 if (reelPlayer && typeof reelPlayer.playVideo === 'function') {
@@ -1069,34 +1255,25 @@
                 } else {
                     reelPlayer = new YT.Player('video-player-container', {
                         videoId: reelVideoId,
-                        playerVars: { 
-                            'autoplay': 1, 
-                            'controls': 1,
-                            'suggestedQuality': 'hd1080'
-                        },
+                        playerVars: { 'autoplay': 1, 'controls': 1, 'suggestedQuality': 'hd1080' },
                         events: { 'onReady': (event) => event.target.playVideo() }
                     });
                 }
-            };
+            });
 
-            const closeVideoPlayerModal = () => {
-                videoPlayerModal.classList.remove('active');
-                document.body.classList.remove('modal-open');
-                if (reelPlayer && typeof reelPlayer.stopVideo === 'function') {
-                    reelPlayer.stopVideo();
-                }
-            };
-            
-            heroThumbnail.addEventListener('click', openVideoPlayerModal);
-            videoPlayerModalClose.addEventListener('click', closeVideoPlayerModal);
-            videoPlayerModal.addEventListener('click', e => { if (e.target === videoPlayerModal) closeVideoPlayerModal(); });
-
-            // Close modals with Escape key
+            // --- Close modals with Escape key ---
             document.addEventListener('keydown', e => {
                 if (e.key === 'Escape') {
-                    if (projectModal.classList.contains('active')) closeProjectModal();
-                    if (miscProjectModal.classList.contains('active')) closeMiscProjectModal();
-                    if (videoPlayerModal.classList.contains('active')) closeVideoPlayerModal();
+                    document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                        modal.classList.remove('active');
+                    });
+                    document.body.classList.remove('modal-open');
+                    
+                    // Pause all videos
+                    document.querySelectorAll('video').forEach(vid => vid.pause());
+                    if (reelPlayer && typeof reelPlayer.stopVideo === 'function') {
+                        reelPlayer.stopVideo();
+                    }
                 }
             });
         });
